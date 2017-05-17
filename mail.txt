@@ -1,0 +1,32 @@
+Bonjour,
+
+J'utilise actuellement Knitro sur le serveur neos (https://neos-server.org/neos/solvers/nco:Knitro/AMPL.html).
+
+Je suis face à un comportement étrange. Pour le fichier .mod ici: (https://github.com/librallu/knitro-test/blob/master/test.mod),
+j'obtiens une valeur minimisée à 40 000.
+  - Final feasibility error (abs / rel) =   2.61e-09 / 2.61e-09
+  - Final optimality error  (abs / rel) =   6.94e-05 / 6.94e-07
+Résultat knitro ici (https://github.com/librallu/knitro-test/blob/master/res_knitro.txt).
+Or il est possible de trouver une solution avec une valeur objectif à 0.
+Vous trouverez ici un script python contenant une solution
+avec objectif à 0 et qui valide l'ensemble des contraintes (https://github.com/librallu/knitro-test/blob/master/verif.py).
+Le résultat de l'exécution de ce script est disponible ici (https://github.com/librallu/knitro-test/blob/master/result_verif.txt).
+
+Aussi, j'ai pu faire un test avec IPOPT sur la même instance, j'obtiens un objectif à 0.
+(https://github.com/librallu/knitro-test/blob/master/res_ipopt.txt)
+
+Ai-je bien compris que le solveur prétend être proche de l'optimal alors que ce n'est pas le cas ?
+Sinon, je vous serais très reconnaissant de débusquer mon erreur.
+
+Par ailleurs, en passant certaines contraintes dans l'objectif, j'obtiens une réponse valide par knitro.
+- nouvelle instance: https://github.com/librallu/knitro-test/blob/master/test2.mod
+- nouveau résultat: https://github.com/librallu/knitro-test/blob/master/res_knitro2.txt
+On peut aussi noter que les contraintes "dist_[...]" sont nécessairement satisfaites (car de type x*x >= 0).
+Et en les enlevant, le solveur trouve une solution valide.
+
+
+Merci d'avance de votre réponse,
+
+Cordialement,
+
+Luc Libralesso (libralesso.l@gmail.com)
